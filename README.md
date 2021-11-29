@@ -1,55 +1,35 @@
-import java.util.Scanner;
+package com.company;
+import java.util.Arrays;
 
-class Main {
-  public static void main(String[] args) {
+public class Main {
 
-    char operator;
-    Double  cislo1,cislo2, vysledok;
+    public static void main(String[] args) {
+        System.out.println("Random čísla:");
+        int[] RANDOM= new int[20];
+        int q=0;
+        int w=0;
+        int e=0;
+for (int i=0; i<20; i++){
+    int random_cislo=(int)(Math.random()*50);
+    RANDOM[i]=random_cislo +1;
+    q=RANDOM[i];
+    e=q+w;
+    w=e;
+}
+for (int pole : RANDOM){
+    System.out.println("" + pole);
+}
 
-    
-    Scanner input = new Scanner(System.in);
+float priemer=e/20;
 
-    System.out.println("Vyber funkciu: +, -, *, /");
-    operator = input.next().charAt(0);
+System.out.println("Súčet čísel : "+e);
+        Arrays.sort(RANDOM);
+        System.out.println("________");
+System.out.println("Najväčšie číslo: "+ RANDOM[19]);
+        System.out.println("________");
+System.out.println("Najmenšie číslo: " + RANDOM[0]);
+        System.out.println("________");
+        System.out.println("KONIEC !");
 
-    
-    System.out.println("Zadaj 1 cislo:");
-    cislo1= input.nextDouble();
-
-    System.out.println("Zadaj 2 cislo:");
-    cislo2= input.nextDouble();
-
-    switch (operator) {
-
-      
-      case '+':
-        vysledok= cislo1+ cislo2;
-        System.out.println(cislo1+ " + " + cislo2+ " = " + vysledok);
-        break;
-
-      
-      case '-':
-        vysledok= cislo1- cislo2;
-        System.out.println(cislo1+ " - " + cislo2+ " = " + vysledok);
-        break;
-
-      
-      case '*':
-        vysledok= cislo1* cislo2;
-        System.out.println(cislo1+ " * " + cislo2+ " = " + vysledok);
-        break;
-
-      
-      case '/':
-        vysledok= cislo1/cislo2;
-        System.out.println(cislo1+ " / " + cislo2+ " = " + vysledok);
-        break;
-
-      default:
-        System.out.println("Zly operator!");
-        break;
     }
-
-    input.close();
-  }
 }
