@@ -1,35 +1,61 @@
 package com.company;
-import java.util.Arrays;
-
+import java.util.Scanner;
 public class Main {
 
-    public static void main(String[] args) {
-        System.out.println("Random čísla:");
-        int[] RANDOM= new int[20];
-        int q=0;
-        int w=0;
-        int e=0;
-for (int i=0; i<20; i++){
-    int random_cislo=(int)(Math.random()*50);
-    RANDOM[i]=random_cislo +1;
-    q=RANDOM[i];
-    e=q+w;
-    w=e;
-}
-for (int pole : RANDOM){
-    System.out.println("" + pole);
-}
+    public static void main(String[] args)
+    {
+        int a, b, i, prvy, druhy, treti, f, x;
+        Scanner scan = new Scanner(System.in);
 
-float priemer=e/20;
+        System.out.print("Zadaj velkost pola: ");
+        a= scan.nextInt();
 
-System.out.println("Súčet čísel : "+e);
-        Arrays.sort(RANDOM);
-        System.out.println("________");
-System.out.println("Najväčšie číslo: "+ RANDOM[19]);
-        System.out.println("________");
-System.out.println("Najmenšie číslo: " + RANDOM[0]);
-        System.out.println("________");
-        System.out.println("KONIEC !");
+        int[] arr = new int[a];
 
+        System.out.print("Zadaj " +a+" cisla: ");
+        for(i=0; i<a; i++)
+            arr[i] = scan.nextInt();
+
+        for(i=0; i<(a-1); i++)
+        {
+            for(f=0; f<(a-i-1); f++)
+            {
+                if(arr[f]>arr[f+1])
+                {
+                    x = arr[f];
+                    arr[f] = arr[f+1];
+                    arr[f+1] = x;
+                }
+            }
+        }
+        System.out.println("\nZoradene pole:");
+        for(i=0; i<a; i++)
+            System.out.print(arr[i]+ " ");
+
+
+        System.out.print("\n\nZadaj cislo, ktore chces vyhladat: ");
+        b = scan.nextInt();
+
+        prvy = 0;
+        druhy = a-1;
+        treti = (prvy+druhy)/2;
+
+        while(prvy<=druhy)
+        {
+            if(arr[treti]<b)
+                prvy = treti+1;
+            else if(arr[treti]==b)
+            {
+                System.out.println("\nCislo bolo najdene v kroku:" +treti+ ", Pozicia cisla:" +(treti+1));
+                break;
+            }
+            else
+                druhy = treti-1;
+
+            treti = (prvy+druhy)/2;
+        }
+
+        if(prvy>druhy)
+            System.out.println("\nCislo, nieje v poli :(");
     }
 }
